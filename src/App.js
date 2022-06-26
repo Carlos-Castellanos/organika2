@@ -15,7 +15,9 @@ function App() {
     <div className="App">
       <Navbar />
       <main>
-        <h1>Welcome to my super organika store !!!</h1>
+        <header className="App-header">
+        <h1>Welcome to Organika store </h1>
+        </header>
         <Catalog/>
       </main>
 

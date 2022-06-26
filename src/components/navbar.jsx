@@ -22,14 +22,14 @@ function Navbar() {
                                 Dropdown
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">Action</a></li>
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">Another action</a></li>
+                                <li><a className="dropdown-item" href="http://localhost:3000/#">🍊 Fruits</a></li>
+                                <li><a className="dropdown-item" href="http://localhost:3000/#">🍅 Veggies</a></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">Something else here</a></li>
+                                <li><a className="dropdown-item" href="http://localhost:3000/#">💊 Vitamins</a></li>
                             </ul>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link disabled" href="http://localhost:3000/#">Disabled</a>
+                            <a className="nav-link " href="http://localhost:3000/#">🛒</a>
                         </li>
                     </ul>
                     <form className="d-flex" role="search">
