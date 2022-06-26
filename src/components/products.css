@@ -1,0 +1,18 @@
+.products{
+color: rgb(9, 82, 20);
+border: 1px solid gray;
+display: inline-block;
+border-radius: 5px;
+padding: 10px;
+margin: 10px;
+box-shadow: 5px 5px 5px gray;
+}
+.products h2{
+    color: green;
+}
+.products img{
+    width: 200px;
+}
+.products label{
+    display: block;
+}

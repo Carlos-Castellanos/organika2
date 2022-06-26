@@ -1,13 +1,22 @@
 // import logo from './logo.svg';
 import './App.css';
+// import 'botstrap/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
+
+import 'bootstrap/dist/js/bootstrap.min.js';
+
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import Catalog from './components/catalog';
+
 function App() {
   return (
     <div className="App">
       <Navbar />
       <main>
         <h1>Welcome to my super organika store !!!</h1>
+        <Catalog/>
       </main>
 
       <Footer />
@@ -16,3 +25,4 @@ function App() {
 }
 
 export default App;
+

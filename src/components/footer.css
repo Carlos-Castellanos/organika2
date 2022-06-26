@@ -1,52 +1,19 @@
- footer{
-    padding-top: 5px;
-    background-color: black;
-    color: rgb(224, 224, 224);
-    height: 250px;
-    width: 97%;
 
-    border-radius: 15px;
-    margin: 0 20px 0 20px;
-  } 
-
-footer a {
-  color: rgb(235, 235, 235);
-  text-decoration: none;
+#button-addon1 {
+  color: #19883a;
 }
 
-footer a:hover,
-footer a:focus {
+i {
+  color: #19883a;
+}
+
+.form-control::placeholder {
+  font-size: 0.95rem;
   color: #aaa;
-  text-decoration: none;
-  border-bottom: 1px dotted #999;
-} 
-
-footer .form-control {
-  background-color: #1f2022;
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
-  border: none;
-  resize: none;
-  color: #d1d2d2;
-  padding: 0.7em 1em;
-}
-.container-footer{
-    display: flex;
-    justify-content: space-evenly;
-    border-radius: 15px;
-    width: 100%;
-
-}
-.column0{
-    flex:3;
-    font-size: 28px;
-}
-.column1{
-    flex:3;
-}
-.column2{
-    flex: 4;
+  font-style: italic;
 }
 
-.list {
-    list-style: none;
+.form-control.shadow-0:focus {
+  box-shadow: none;
 }
+

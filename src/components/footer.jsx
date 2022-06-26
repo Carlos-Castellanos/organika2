@@ -1,45 +1,60 @@
 import "./footer.css"
 
+//<p>All the copy rights reserved &copy; 2022 Carlos Lopez </p>
+ //  <body className="d-flex flex-column">
 function Footer() {
     return (
 
-        <footer className="footer">
-            <div className="container-footer">
-
-                            <div className="column0">
-                                <ul className="list">
-                                    <li><a href="http://localhost:3000/#">Product</a></li>
-                                    <li><a href="http://localhost:3000/#">Benefits</a></li>
-                                    <li><a href="http://localhost:3000/#">Partners</a></li>
-                                    <li><a href="http://localhost:3000/#">Team</a></li>
+        <footer className="footer bg-white">
+                    <div className="container py-5">
+                        <div className="row py-4">
+                            <div className="col-lg-4 col-md-6 mb-4 mb-lg-0"><img src="img/logo.png" alt="" width="180" className="mb-3"/>
+                            <p className="font-italic text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                                <ul className="list-inline mt-4">
+                                    <li className="list-inline-item"><a href="http://localhost:3000/#" target="_blank" rel='noreferrer'title="twitter"><i className="fa fa-twitter"></i></a></li>
+                                    <li className="list-inline-item"><a href="http://localhost:3000/#" target="_blank" rel='noreferrer' title="facebook"><i className="fa fa-facebook"></i></a></li>
+                                    <li className="list-inline-item"><a href="http://localhost:3000/#" target="_blank" rel='noreferrer' title="instagram"><i className="fa fa-instagram"></i></a></li>
+                                    <li className="list-inline-item"><a href="http://localhost:3000/#" target="_blank" rel='noreferrer' title="pinterest"><i className="fa fa-pinterest"></i></a></li>
+                                    <li className="list-inline-item"><a href="http://localhost:3000/#" target="_blank" rel='noreferrer' title="vimeo"><i className="fa fa-vimeo"></i></a></li>
                                 </ul>
                             </div>
-                            <div className="column1">
-                            <p>All the copy rights reserved &copy; 2022 Carlos Lopez </p>
-                                <ul className="list">
-                                    <li><a href="http://localhost:3000/#">Documentation</a></li>
-                                    <li><a href="http://localhost:3000/#">Support</a></li>
-                                    <li><a href="http://localhost:3000/#">Legal Terms</a></li>
-                                    <li><a href="http://localhost:3000/#">About</a></li>
+                            <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                                <h6 className="text-uppercase font-weight-bold mb-4">Shop</h6>
+                                <ul className="list-unstyled mb-0">
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">For Women</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">For Men</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Stores</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Our Blog</a></li>
                                 </ul>
                             </div>
-                    <div className="column2">
-                        <h5 className="text-md-right">Contact Us</h5>
-                        <form>
-                            <fieldset className="form-group">
-                                <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Enter email" />
-                            </fieldset>
-                            <fieldset className="form-group">
-                                <textarea className="form-control" id="exampleMessage" placeholder="Message"></textarea>
-                            </fieldset>
-                            <fieldset className="form-group text-xs-right">
-                                <button type="button" className="btn btn-secondary-outline btn-lg">Send</button>
-                            </fieldset>
-                        </form>
-                    </div>  {/*column2*/}
- 
-                          </div>
-                          
+                            <div className="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                                <h6 className="text-uppercase font-weight-bold mb-4">Company</h6>
+                                <ul className="list-unstyled mb-0">
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Login</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Register</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Wishlist</a></li>
+                                    <li className="mb-2"><a href="http://localhost:3000/#" className="text-muted">Our Products</a></li>
+                                </ul>
+                            </div>
+                            <div className="col-lg-4 col-md-6 mb-lg-0">
+                                <h6 className="text-uppercase font-weight-bold mb-4">Newsletter</h6>
+                                <p className="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At itaque temporibus.</p>
+                                <div className="p-1 rounded border">
+                                    <div className="input-group">
+                                        <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" className="form-control border-0 shadow-0"/>
+                                            <div className="input-group-append">
+                                                <button id="button-addon1" type="submit" className="btn btn-link"><i className="fa fa-paper-plane"></i></button>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-light py-4">
+                        <div className="container text-center">
+                            <p className="text-muted mb-0 py-2">All the copy rights reserved &copy; 2022 Carlos Lopez</p>
+                        </div>
+                    </div>
         </footer>
     );
 }
