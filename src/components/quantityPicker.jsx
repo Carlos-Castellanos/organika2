@@ -3,23 +3,26 @@ import "./quantityPicker.css";
 
 
 
-const QuantityPicker = () => {
+const QuantityPicker = (props) => {
     let [quantity, setQuantity] = useState(0);
 
     const handleIncrease = () => {
-        setQuantity(quantity + 1);
-
+        let newVal = quantity + 1;   // to protect values on the timeline
+        setQuantity(newVal);
+        props.onChange(newVal);  //call the functionon the parent
     }
 
     const handleDecrease = () => {
-         if (quantity > 1) {
-            setQuantity(quantity - 1);
+        if (quantity > 1) {
+            let newVal = quantity - 1;
+            setQuantity(newVal);
+            props.onChange(newVal);
         }
 
     }
 
-    
-    return(
+
+    return (
         <div className="quantityPicker">
             <button className="btn btn-danger btn-sm" onClick={handleDecrease}>-</button>
             <label>{quantity}</label>
@@ -29,3 +32,5 @@ const QuantityPicker = () => {
 }
 
 export default QuantityPicker;
+
+

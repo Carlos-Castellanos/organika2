@@ -9,6 +9,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Catalog from './components/catalog';
+import About from './components/about';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <h1>Welcome to Organika store </h1>
         </header>
         <Catalog/>
+        <About></About>
       </main>
 
       <Footer />

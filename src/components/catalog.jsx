@@ -22,11 +22,17 @@ const Catalog = () => {
             <h2>This is our amazing Catalog!</h2>
             <h3>We have {products.length} products!!</h3>
             <div className="catalog-container">
-                {products.map((item) => {
+                {/* {products.map((item) => {
                     return (
                         <Products key={item.id} data={item} />
                     );
-                })}
+                })} */}
+
+                {products.map(item => 
+
+                        <Products key={item.id} data={item} />
+
+                )} 
             </div>
         </div>
     );
