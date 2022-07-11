@@ -1,40 +1,48 @@
+// import { faLinkSlash } from "@fortawesome/free-solid-svg-icons";
 import "./navbar.css"
+import { Link } from 'react-router-dom'
 // import { MenuItems } from "./MenuItems";
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-success p-2 text-dark bg-opacity-25">
             <div className="container-fluid">
-                <a className="navbar-brand" href="http://localhost:3000/#">Organika</a>
+                <Link className="navbar-brand text-white" to="/">Organika</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="icon-collapsed navbar-toggler-icon"> &laquo; </span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="http://localhost:3000/#">Home</a>
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li className="nav-item text-white">
+                            <Link className="nav-link active text-black" aria-current="page" to="/">Home</Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="http://localhost:3000/#">Link</a>
+                            <Link className="nav-link text-black" to="/catalog">Catalog</Link>
                         </li>
-                        <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="http://localhost:3000/#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <li className="nav-item">
+                            <Link className="nav-link text-black" to="/admin">Admin</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link text-black" to="/about">About</Link>
+                        </li>
+                        <li className="nav-item dropdown text-black">
+                            <Link className="nav-link dropdown-toggle text-black" to="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Dropdown
-                            </a>
+                            </Link>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">🍊 Fruits</a></li>
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">🍅 Veggies</a></li>
+                                <li><Link className="dropdown-item" to="http://localhost:3000/#">🍊 Fruits</Link></li>
+                                <li><Link className="dropdown-item" to="http://localhost:3000/#">🍅 Veggies</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="http://localhost:3000/#">💊 Vitamins</a></li>
+                                <li><Link className="dropdown-item" to="http://localhost:3000/#">💊 Vitamins</Link></li>
                             </ul>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link " href="http://localhost:3000/#">🛒</a>
-                        </li>
+                        {/* <li className="nav-item">
+                            <Link className="nav-link " to="http://localhost:3000/#">🛒</Link>
+                        </li> */}
                     </ul>
                     <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                        {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
+                        <Link className="btn btn-outline-dark" to="/cart">🛒 View Cart</Link>
                     </form>
                 </div>
             </div>
@@ -47,10 +55,10 @@ function Navbar() {
         //                {MenuItems.map((item, index) => {
         //                 return (
         //                     <li key={index}>
-        //                         <a className={item.cName} href={item.url}>
+        //                         <Link className={item.cName} to={item.url}>
         //                             <span className="icon">{item.icon}</span>
         //                             <span className="title">{item.Title}</span>
-        //                         </a>
+        //                         ></Link>
         //                     </li>
         //                 );
         //             })}

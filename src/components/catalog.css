@@ -1,6 +1,15 @@
-.catalog h2 {
-    color: chocolate;
+.catalog {
+    padding-top: 10px;
 }
+
+.catalog h2 {
+    color: rgb(70,75,81);
+}
+
+.catalog h3 {
+    color: rgba(51, 0, 255, 0.88);
+}
+
 
 /* .catalog-container {
     display: grid;

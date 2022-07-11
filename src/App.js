@@ -10,20 +10,34 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Catalog from './components/catalog';
 import About from './components/about';
+import Home from './components/home';
+import Cart from './components/cart';
+import Admin from './components/admin';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <main>
-        <header className="App-header">
-        <h1>Welcome to Organika store </h1>
-        </header>
-        <Catalog/>
-        <About></About>
-      </main>
+      <BrowserRouter>
+        <Navbar />
+        <main>
+        <Routes>
+{/* 
+            <header className="App-header"> */}
+            <Route path='/' element={<Home/>}/>
+            {/* </header> */}
+            <Route path='/catalog' element={<Catalog/>} />
+            <Route path='/cart' element={<Cart/>} />
+            <Route element={<Admin/>} path="/admin" />
+            <Route path='/about' element={<About/>} />
 
-      <Footer />
+        </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+
+
     </div>
   );
 }
