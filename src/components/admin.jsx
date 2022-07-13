@@ -1,163 +1,208 @@
+import { useState } from 'react';
 import './admin.css'
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-
-// id:10,
-// img: "onion.jpg",
-
 
 const Admin = () => {
-    console.log("Admin");
-
-    const [product, setproduct] = useState({
-        producttitle:  '',
+    // create a empty object 
+    const [coupon, setCoupon] = useState({});
+    const [product, setProduct] = useState({
+        title: '',
         price: '',
-        stock:  '',
-        discount: '',
-        category:  ''
-    });
-
+        image: '',
+        stock: '',
+        category: ''
+    });  //title, price, image, category,
     const [errorMsg, setErrorMsg] = useState('');
-    const { producttitle, price, stock, discount, category } = product;
+    /**
+     * 
+     * {
+     * code: "qwerty",
+     * diconunt:123} 
+     */
 
-    const handleOnSubmit = (event) => {
-        event.preventDefault();
-        const values = [producttitle, price, stock, discount, category];
+    // handler for changes in the form coupon. 
+    const handleCouponChange = (e) => {
+        let name = e.target.name;   // take the name of input element in the form
+        let value = e.target.value; // take the value of input element in the 
+        let copy = { ...coupon };     // create a copy of each element in the objet
+        copy[name] = value;         // modify the copy 
+
+        if (name === "discount") {
+            if (value === '' || parseInt(value) === +value) {
+                copy[name] = value;
+            }
+        }
+        else {
+            copy[name] = value;
+        }
+        setCoupon(copy)             // set the coupon back
+
+    }
+
+    // send the coupon information to the console
+    const saveCoupon = () => {
+        console.log("==>" + coupon.code + " " + coupon.discount);
+        console.log(coupon);
+        // create a copy of coupon obj
+        // set the discount to be a number
+        // console log a copy
+        let copy = { ...coupon };
+        // copy.discount = parseFloat(coupon.discount);
+        // copy.discount = coupon.discount*1;
+        copy.discount = +coupon.discount;
+        console.log(copy);
+    }
+
+    // handler for changes in the form coupon. 
+    const handleProductChange = (e) => {
+        let name = e.target.name;   // take the name of input element in the form
+        let value = e.target.value; // take the value of input element in the 
+        let copy = { ...product };     // create a copy of each element in the objet
+        copy[name] = value;         // modify the copy 
+        //setProduct(copy)             // set the coupon back
+
+        switch (name) {
+            case 'stock':
+                if (value === '' || parseInt(value) === +value) {
+                    copy[name] = value;
+                }
+                break;
+            case 'price':
+                if (value === '' || value.match(/^\d{1,}(\.\d{0,2})?$/)) {
+                    copy[name] = value;
+                }
+                break;
+            default:
+                copy[name] = value;
+        }
+        setProduct(copy)             // set the coupon back
+    };
+
+    // send the coupon information to the console
+    const saveProduct = () => {
+        console.log(product);
         let errorMsg = '';
-
+        let values = [
+            product.title,
+            product.price,
+            product.stock,
+            product.image,
+            product.category
+        ]
         const allFieldsFilled = values.every((field) => {
             const value = `${field}`.trim();
             return value !== '' && value !== '0';
         });
 
         if (allFieldsFilled) {
-            const product = {
-                id: uuidv4(),
-                producttitle,
-                price,
-                stock,
-                discount,
-                category
-            };
-            console.log("New product:");
-            console.log(product);
+            let copy = { ...product };
+            copy.price = parseFloat(product.price);
+            copy.stock = +product.stock;
+            console.log(copy);
+
         } else {
             errorMsg = 'Please fill out all the fields.';
         }
         setErrorMsg(errorMsg);
-    };
 
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-        switch (name) {
-            case 'discount':
-                if (value === '' || parseInt(value) === +value) {
-                    setproduct((prevState) => ({
-                        ...prevState,
-                        [name]: value
-                    }));
-                }
-                break;
-            case 'stock':
-                if (value === '' || parseInt(value) === +value) {
-                    setproduct((prevState) => ({
-                        ...prevState,
-                        [name]: value
-                    }));
-                }
-                break;
-            case 'price':
-                if (value === '' || value.match(/^\d{1,}(\.\d{0,2})?$/)) {
-                    setproduct((prevState) => ({
-                        ...prevState,
-                        [name]: value
-                    }));
-                }
-                break;
-            default:
-                setproduct((prevState) => ({
-                    ...prevState,
-                    [name]: value
-                }));
-        }
-    };
+
+    }
+
 
     return (
-        <div className="main-form">
+        <div className='admin-page'>
+            <h1 className="title">Store Administration</h1>
             {errorMsg && <p className="errorMsg">{errorMsg}</p>}
-             <form onSubmit={handleOnSubmit}> 
-                <div className="mb-3" id="name">
-                    <label>product Name</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="producttitle"
-                        value={producttitle}
-                        placeholder="Product Title"
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3" id="price">
-                    <label>product Price</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="price"
-                        value={price}
-                        placeholder="Price"
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3" id="stock">
-                    <label>product stock</label>
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="stock"
-                        value={stock}
-                        placeholder="Stock"
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3" id="discount">
-                    <label>discount</label>
-                    <input
-                        className="form-control"
-                        type="number"
-                        name="discount"
-                        value={discount}
-                        placeholder="Discount"
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3" id="category">
-                    <label>product category</label>
-                    <select 
-                        className="form-select" 
-                        type="text"
-                        name="category"
-                        value={category}
-                        placeholder="Category"
-                        onChange={handleInputChange} 
-                        aria-label="Default select example">
-                        <option selected hidden >Open this select menu</option>
-                        <option value="Fruits">Fruits</option>
-                        <option value="Veggies">Veggies</option>
-                        <option value="Vitamins">Vitamins</option>
-                    </select>
-                </div>
-                <button variant="primary" type="submit" className="submit-btn">
-                    Add
-                </button>
-                
-            </form>
+            <div className="parent">
+                <section className="products">
+                    <div className="form">
+                        {/* //title, price, image, category, */}
+                        <div className="my-control" >
+                            <label>Name</label>
+                            <input className="form-control" onChange={handleProductChange} type="text" name="title" placeholder="Product Title" />
+                        </div>
+                        <div className="my-control">
+                            <label>Price</label>
+                            <input
+                                className="form-control"
+                                type="number"
+                                name="price"
+                                onChange={handleProductChange}
+                                placeholder="Price"
+
+                            />
+                        </div>
+                        <div className="my-control" id="image">
+                            <label>image</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="image"
+                                onChange={handleProductChange}
+                                placeholder="text"
+                            />
+                        </div>
+                        <div className="my-control" >
+                            <label>stock</label>
+                            <input
+                                className="form-control"
+                                type="number"
+                                name="stock"
+                                onChange={handleProductChange}
+                                placeholder="Stock"
+                            />
+                        </div>
+
+                        <div className="my-control" >
+                            <label>category</label>
+                            <select
+                                className="form-select"
+                                type="text"
+                                name="category"
+                                onChange={handleProductChange}
+                                placeholder="Category"
+                                aria-label="Default select example">
+                                <option selected hidden >Open this select menu</option>
+                                <option value="Fruits">Fruits</option>
+                                <option value="Veggies">Veggies</option>
+                                <option value="Vitamins">Vitamins</option>
+                            </select>
+                        </div>
+                        <button variant="primary" type="submit" className="btn btn-primary" onClick={saveProduct}>
+                            Add Product
+                        </button>
+                    </div>
+                </section>
+                <section className="coupons">
+                    <h3>Coupon codes</h3>
+                    <div className="form">
+                        <div className="my-control">
+                            <label>Code</label>
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="code"
+                                onChange={handleCouponChange}
+                                placeholder="code"
+                            />
+                        </div>
+                        <div className="my-control">
+                            <label>Discount</label>
+                            <input
+                                className="form-control"
+                                type="number"
+                                name="discount"
+                                onChange={handleCouponChange}
+                                placeholder="discount"
+                            />
+                        </div>
+                        <button variant="primary" type="submit" className="btn btn-primary" onClick={saveCoupon}>
+                            Save coupon
+                        </button>
+                    </div>
+                </section>
+            </div>
         </div>
-    );
-};
+    )
+}
 
 export default Admin;
-
-
-
-
-

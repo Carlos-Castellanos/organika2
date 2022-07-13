@@ -29,7 +29,7 @@ function App() {
             {/* </header> */}
             <Route path='/catalog' element={<Catalog/>} />
             <Route path='/cart' element={<Cart/>} />
-            <Route element={<Admin/>} path="/admin" />
+            <Route path="/admin" element={<Admin/>}  />
             <Route path='/about' element={<About/>} />
 
         </Routes>
