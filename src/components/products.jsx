@@ -1,13 +1,15 @@
-import { useState } from "react";
 import "./products.css";
 import QuantityPicker from "./quantityPicker";
+import { useState, useContext} from 'react';           // react context
+import StoreContext from './../context/storeContext'  // react context
 
 
 
 const Products = (props) => {
     let moneda = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(props.data.price);
-
     let [quantity, setQuantity] = useState(1);
+
+    let globalAddProd = useContext(StoreContext).addProduct;  // access to the global context varibles and functions, in this case only addprocduct
 
     const quantityChanger = (val) => {
         // console.log("Quantity changed0", val);
@@ -18,6 +20,11 @@ const Products = (props) => {
         let total=props.data.price * quantity;
         return total.toFixed(2);
     }
+
+    const addProd = ( ) =>{
+        console.log("adding")
+        globalAddProd(props.data,quantity)
+    }
     return (
 
         <div className="products">
@@ -27,7 +34,7 @@ const Products = (props) => {
             <label htmlFor="">Total: $ {getTotal()} </label>
             <QuantityPicker onChange={quantityChanger}></QuantityPicker>
 
-            <button className="btn btn-outline-success btn-sm">Add</button>
+            <button className="btn btn-outline-success btn-sm" onClick={addProd}>Add</button>
         </div>
 
 

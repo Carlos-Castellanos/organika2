@@ -1,9 +1,13 @@
 // import { faLinkSlash } from "@fortawesome/free-solid-svg-icons";
 import "./navbar.css"
 import { Link } from 'react-router-dom'
+import {useContext} from 'react';           // react context
+import StoreContext from './../context/storeContext'  // react context
+
 // import { MenuItems } from "./MenuItems";
 
 function Navbar() {
+    let cart = useContext(StoreContext).cart;
     return (
         <nav className="navbar navbar-expand-lg bg-success p-2 text-dark bg-opacity-25">
             <div className="container-fluid">
@@ -42,7 +46,10 @@ function Navbar() {
                     </ul>
                     <form className="d-flex" role="search">
                         {/* <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" /> */}
-                        <Link className="btn btn-outline-dark" to="/cart">🛒 View Cart</Link>
+                        <Link className="btn btn-outline-dark" to="/cart">
+                            🛒-
+                            <span className='badge bg-primary'>{cart.length} </span>
+                        - View Cart</Link>
                     </form>
                 </div>
             </div>

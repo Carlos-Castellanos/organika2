@@ -12,6 +12,8 @@ const Admin = () => {
         category: ''
     });  //title, price, image, category,
     const [errorMsg, setErrorMsg] = useState('');
+    const [allCoupons, setAllCoupons] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
     /**
      * 
      * {
@@ -39,17 +41,21 @@ const Admin = () => {
     }
 
     // send the coupon information to the console
+    // create a copy of coupon obj
+    // set the discount to be a number
+    // console log a copy
     const saveCoupon = () => {
         console.log("==>" + coupon.code + " " + coupon.discount);
         console.log(coupon);
-        // create a copy of coupon obj
-        // set the discount to be a number
-        // console log a copy
         let copy = { ...coupon };
         // copy.discount = parseFloat(coupon.discount);
         // copy.discount = coupon.discount*1;
         copy.discount = +coupon.discount;
         console.log(copy);
+        // add a coupon in the coupons array
+        let copyCoupons = [...allCoupons]  // create a copy of all coupons
+        copyCoupons.push(copy);            //add a new elemente in the copy
+        setAllCoupons(copyCoupons);        // Copy a new list in "copyCoupons"
     }
 
     // handler for changes in the form coupon. 
@@ -98,6 +104,11 @@ const Admin = () => {
             copy.price = parseFloat(product.price);
             copy.stock = +product.stock;
             console.log(copy);
+            // add a products in the products array
+            let copyProducts = [...allProducts]  // create a copy of all coupons
+            copyProducts.push(copy);            //add a new elemente in the copy
+            setAllProducts(copyProducts);        // Copy a new list in "copyCoupons"
+            console.log(allProducts)
 
         } else {
             errorMsg = 'Please fill out all the fields.';
@@ -171,6 +182,13 @@ const Admin = () => {
                             Add Product
                         </button>
                     </div>
+
+                    <div className="Products-list">
+                        <h3>List Productos</h3>
+                        <ul>
+                            {allProducts.map((prod, index) => <li key={index}> {prod.title} - ${prod.price}</li>)}
+                        </ul>
+                    </div>
                 </section>
                 <section className="coupons">
                     <h3>Coupon codes</h3>
@@ -198,6 +216,12 @@ const Admin = () => {
                         <button variant="primary" type="submit" className="btn btn-primary" onClick={saveCoupon}>
                             Save coupon
                         </button>
+                    </div>
+                    <div className="coupons-list">
+                        <h3>List coupons</h3>
+                        <ul>
+                            {allCoupons.map((coupon, index) => <li key={index}> {coupon.code} - {coupon.discount} %off</li>)}
+                        </ul>
                     </div>
                 </section>
             </div>

@@ -4,7 +4,7 @@ import "./quantityPicker.css";
 
 
 const QuantityPicker = (props) => {
-    let [quantity, setQuantity] = useState(0);
+    let [quantity, setQuantity] = useState(1);
 
     const handleIncrease = () => {
         let newVal = quantity + 1;   // to protect values on the timeline
