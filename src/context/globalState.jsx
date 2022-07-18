@@ -9,11 +9,11 @@ const GlobalState = (props) => {
     const myAddProduct = (product,cant) => {
         console.log('Global add prod')
         let cartLIst = [...cart];
-        product.quantity=cant;
+        // product.quantity=cant;
         let notExist = true;
         for(let i=0;i<cart.length;i++) {
             if(cart[i].id === product.id) {
-                cart[i].quantity=cant;
+                cart[i].quantity=product.quantity;
                 notExist = false;
             }
         }
@@ -25,7 +25,18 @@ const GlobalState = (props) => {
         console.log(cartLIst);
         console.log(cart)
     };
-    const myRemoveProduct = () => {};
+    const myRemoveProduct = (myId) => {
+
+        console.log('Global add prod: '+ myId)
+        //this code is funcionality for myId is the position of the products list array
+        // let cartLIst = [...cart];
+        // cartLIst.splice(myId, 1);
+        // setCart(cartLIst);
+
+        //This code is funcionality for myId is the product id
+        let copyCart =cart.filter(prod => prod.id !== myId);
+        setCart(copyCart);
+    };
 
     return (
         // the left part is Public, the right part is Private

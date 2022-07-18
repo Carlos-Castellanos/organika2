@@ -2,3 +2,30 @@
     background-color: rgb(234, 217, 217);
     min-height: 800px;
 }
+.container{
+    color: rgb(9, 82, 20);
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 5px 5px 5px gray;
+    height: auto;
+    align-items: center;
+}
+
+.list{
+    flex:17;
+}
+.infox{
+    flex:2;
+    background-color: aliceblue;
+}
+.infox h5{
+    font-size: 36px;
+}
+.infox h3{
+    font-size: 32px;
+}

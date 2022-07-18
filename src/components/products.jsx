@@ -23,7 +23,11 @@ const Products = (props) => {
 
     const addProd = ( ) =>{
         console.log("adding")
-        globalAddProd(props.data,quantity)
+        /** should be a copy of props.data plus the quantity */
+        // let prod4cart= {...props.data};
+        // prod4cart.quantity = quantity;
+        let prod4cart= {...props.data,quantity}
+        globalAddProd(prod4cart)
     }
     return (
 
