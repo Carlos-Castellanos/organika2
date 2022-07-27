@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './admin.css'
+import DataService from "../services/dataServices";
 
 const Admin = () => {
     // create a empty object 
     const [coupon, setCoupon] = useState({});
     const [product, setProduct] = useState({
+        id: '0',
         title: '',
         price: '',
-        image: '',
+        img: '',
         stock: '',
         category: ''
     });  //title, price, image, category,
@@ -40,6 +42,15 @@ const Admin = () => {
 
     }
 
+    const loadCoupon = async () => {
+        let services = new DataService();
+        let data = await services.getCoupons();   //return array of catalog instances
+        setAllCoupons(data);
+    }
+    useEffect(() => {
+        loadCoupon();
+    }, []);
+
     // send the coupon information to the console
     // create a copy of coupon obj
     // set the discount to be a number
@@ -56,6 +67,11 @@ const Admin = () => {
         let copyCoupons = [...allCoupons]  // create a copy of all coupons
         copyCoupons.push(copy);            //add a new elemente in the copy
         setAllCoupons(copyCoupons);        // Copy a new list in "copyCoupons"
+        //send to the collection in the data base organika
+        let services = new DataService();
+        services.saveCoupon(copy);
+        //loadCoupon()
+
     }
 
     // handler for changes in the form coupon. 
@@ -65,7 +81,7 @@ const Admin = () => {
         let copy = { ...product };     // create a copy of each element in the objet
         copy[name] = value;         // modify the copy 
         //setProduct(copy)             // set the coupon back
-
+        copy["id"] = 0; //
         switch (name) {
             case 'stock':
                 if (value === '' || parseInt(value) === +value) {
@@ -91,9 +107,12 @@ const Admin = () => {
             product.title,
             product.price,
             product.stock,
-            product.image,
+            product.img,
             product.category
         ]
+
+
+
         const allFieldsFilled = values.every((field) => {
             const value = `${field}`.trim();
             return value !== '' && value !== '0';
@@ -109,6 +128,9 @@ const Admin = () => {
             copyProducts.push(copy);            //add a new elemente in the copy
             setAllProducts(copyProducts);        // Copy a new list in "copyCoupons"
             console.log(allProducts)
+            //todo save copy on server side
+            let services = new DataService();
+            services.saveProduct(copy);
 
         } else {
             errorMsg = 'Please fill out all the fields.';
@@ -147,7 +169,7 @@ const Admin = () => {
                             <input
                                 className="form-control"
                                 type="text"
-                                name="image"
+                                name="img"
                                 onChange={handleProductChange}
                                 placeholder="text"
                             />

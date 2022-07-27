@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import DataService from "../services/dataServices";
 import "./catalog.css";
@@ -6,15 +5,20 @@ import Products from "./products";
 
 
 const Catalog = () => {
-    let [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([]);
 
-    const loadCatalog = () => {
+    const loadCatalog = async () => {
         let services = new DataService();
-        let data = services.getCatalog();   //return array of catalog instances
+        let data = await services.getCatalog();   //return array of catalog instances
+        console.log("load Catalog");
+        console.log(data);
+
         setProducts(data);
     }
 
-    useEffect(() => loadCatalog(), []);
+    useEffect(() => {
+        loadCatalog();
+    }, []);
 
 
     return (
@@ -28,11 +32,11 @@ const Catalog = () => {
                     );
                 })} */}
 
-                {products.map(item => 
+                {products.map(item =>
 
-                        <Products key={item.id} data={item} />
+                    <Products key={item.id} data={item} />
 
-                )} 
+                )}
             </div>
         </div>
     );
@@ -40,4 +44,3 @@ const Catalog = () => {
 }
 
 export default Catalog;
-
